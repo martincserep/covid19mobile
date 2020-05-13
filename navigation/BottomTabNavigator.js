@@ -1,9 +1,12 @@
+import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import SymptomsScreen from '../screens/SymptomsScreen';
+import MapScreen from '../screens/MapScreen';
+import NewsScreen from '../screens/NewsScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -20,29 +23,50 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Home"
         component={HomeScreen}
         options={{
-          title: 'Get Started',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
+          title: 'Kezdőlap',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-home" />,
         }}
       />
       <BottomTab.Screen
-        name="Links"
-        component={LinksScreen}
+        name="Symptoms"
+        component={SymptomsScreen}
         options={{
-          title: 'Resources',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          title: 'Tünetek',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-pulse" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Map"
+        component={MapScreen}
+        options={{
+          title: 'Megyék',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-map" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="News"
+        component={NewsScreen}
+        options={{
+          title: 'Hírek',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-paper" />,
         }}
       />
     </BottomTab.Navigator>
   );
 }
 
+
 function getHeaderTitle(route) {
   const routeName = route.state?.routes[route.state.index]?.name ?? INITIAL_ROUTE_NAME;
 
   switch (routeName) {
     case 'Home':
-      return 'How to get started';
-    case 'Links':
-      return 'Links to learn more';
+      return 'Kezdőlap';
+    case 'Symptoms':
+      return 'Tünetek';
+    case 'Map':
+      return 'Összes fertőzött megyékre bontva';
+    case 'News':
+      return 'Hírek';
   }
 }
