@@ -1,10 +1,8 @@
-import { Ionicons } from '@expo/vector-icons';
-import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import { RectButton, ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 import WhatToDo from '../components/WhatToDo';
-import { Badge, ThemeContext } from 'react-native-elements';
+import { Badge } from 'react-native-elements';
 import { lightTheme, darkTheme } from '../constants/Colors';
 import { Appearance } from 'react-native-appearance';
 
@@ -45,14 +43,19 @@ export default class SymptomsScreen extends React.Component {
 	};
 	componentDidMount() {
 		this.getData();
-		//geolocation -> fetch
 	}
 
 	render() {
-		// const colorScheme = 'dark';
 		return (
-			// <ThemeContext value={colorScheme === 'light' ? lightTheme : darkTheme}>
 			<ScrollView>
+				<View>
+					<Text style={styles.introText}>
+						A leggyakoribb tünetek a láz, száraz köhögés és a fáradtság. Egyes betegeknél jelentkezhet
+						izomfájdalom, orrdugulás, orrfolyás, torokfájás, hasmenés, legszomj.
+						A tünetek általában enyhék és fokozatosan jelentkeznek, de vannak olyan fertőzöttek, akiknél
+						nem alakul ki semmilyen tünet és nem érzik magukat betegnek.
+					</Text>
+				</View>
 				{this.state.data &&
 					this.state.data.length > 0 &&
 					this.state.data.map((current) => (
@@ -64,10 +67,9 @@ export default class SymptomsScreen extends React.Component {
 						</View>
 					))}
 
-				<Text>Forrás: koronavirus.gov.hu</Text>
 				<WhatToDo />
+				<Text style={styles.introText}>Forrás: koronavirus.gov.hu</Text>
 			</ScrollView>
-			// </ThemeContext>
 		);
 	}
 }
@@ -82,7 +84,6 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'row',
-		// backgroundColor: '#dddddd',
 		width: '90%',
 		marginLeft: 'auto',
 		marginRight: 'auto',
@@ -93,13 +94,14 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		borderWidth: 2,
 		borderRadius: 10,
+		color: theme.tintColor,
 		borderColor: theme.borderColor,
 	},
 	symptomName: {
 		width: '65%',
 		marginLeft: 10,
-    fontWeight: 'bold',
-    color: theme.tintColor,
+		fontWeight: 'bold',
+		color: theme.tintColor,
 	},
 	casePercent: {
 		textAlign: 'right',
@@ -107,5 +109,11 @@ const styles = StyleSheet.create({
 		justifyContent: 'flex-end',
 		alignItems: 'flex-end',
 		marginRight: 10,
-	},
+	}, 
+	introText: {
+		margin: 10,
+		textAlign: "center",
+		fontSize: 15,
+		color: theme.tintColor,
+	}
 });

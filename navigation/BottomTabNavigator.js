@@ -43,14 +43,14 @@ export default function BottomTabNavigator({ navigation, route }) {
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-map" />,
         }}
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="News"
         component={NewsScreen}
         options={{
           title: 'Hírek',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-paper" />,
         }}
-      />
+      /> */}
     </BottomTab.Navigator>
   );
 }
@@ -66,7 +66,7 @@ function getHeaderTitle(route) {
       return 'Tünetek';
     case 'Map':
       return 'Összes fertőzött megyékre bontva';
-    case 'News':
-      return 'Hírek';
+    // case 'News':
+    //   return 'Hírek';
   }
 }

@@ -57,7 +57,7 @@ export default class MapScreen extends React.Component {
 							<Text style={styles.caseNumber}>{comment.value}</Text>
 						</View>
 					))}
-				<Text>Forrás: koronavirus.gov.hu</Text>
+				<Text style={styles.introText}>Forrás: koronavirus.gov.hu</Text>
 			</ScrollView>
 		);
 	}
@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'row',
-		// backgroundColor: theme.backgroundColor,
 		color: theme.tintColor,
 		width: '90%',
 		marginLeft: 'auto',
@@ -100,4 +99,10 @@ const styles = StyleSheet.create({
 		marginRight: 10,
 		color: theme.tintColor,
 	},
+	introText: {
+		margin: 10,
+		textAlign: "center",
+		fontSize: 15,
+		color: theme.tintColor,
+	}
 });

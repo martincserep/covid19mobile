@@ -12,9 +12,9 @@ import {
 import { ScrollView, FlatList } from 'react-native-gesture-handler';
 import color from 'color';
 import { MonoText } from '../components/StyledText';
-import { Appearance } from 'react-native-appearance';
 import Preventions from '../components/Preventions';
 import * as Progress from 'react-native-progress';
+import { Appearance } from 'react-native-appearance';
 import { darkTheme, lightTheme } from '../constants/Colors';
 
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -220,6 +220,7 @@ export default class HomeScreen extends React.Component {
 							</Text>
 						</View>
 						<Preventions />
+						<Text style={styles.introText}>Forrás: koronavirus.gov.hu</Text>
 					</ScrollView>
 				</View>
 			);
@@ -245,7 +246,6 @@ if (userTheme === 'light') {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		// color: '#FF9800',
 	},
 	caseContainer: {
 		marginTop: 10,
@@ -330,4 +330,10 @@ const styles = StyleSheet.create({
     height: 20,
     color: theme.tintColor,
 	},
+	introText: {
+		margin: 10,
+		textAlign: "center",
+		fontSize: 15,
+		color: theme.tintColor,
+	}
 });
